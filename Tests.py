@@ -3,6 +3,7 @@ import pytest
 from Geometry import *
 
 
+@pytest.mark.circle
 class TestCircle:
     def test_circle_creation(self):
         try:
@@ -24,6 +25,7 @@ class TestCircle:
         assert circle.area() == round(0.16 * pi)
 
 
+@pytest.mark.triangle
 class TestTriangle:
     def test_triangle_creation(self):
         try:
@@ -47,3 +49,7 @@ class TestTriangle:
     def test_triangle_is_right(self):
         triangle = Triangle(5, 5, 5)
         assert triangle.is_right_triangle() == True
+
+    def test_triangle_is_rectangular(self):
+        triangle = Triangle(4, 3, 5)
+        assert triangle.is_rectangular_triangle() == True

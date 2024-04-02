@@ -47,24 +47,11 @@ class Triangle(Figure):    # треугольник
     def is_right_triangle(self):
         return self.side1 == self.side2 and self.side2 == self.side3
 
-    def print_area(self):
-        print(f'Area of {self.name} is {self.area()}')
-
-
-class Rectangle(Figure):    # прямоугольник
-    def __init__(self, *args):
-        if len(args) == 2:
-            self.width = args[0]
-            self.height = args[1]
-            self.name = 'Rectangle'
-        else:
-            raise ValueError(f"2 arguments is required. {len(args)} was given.")
-
-    def area(self):
-        return self.width * self.height
-
-    def is_square(self):
-        return self.width == self.height
+    def is_rectangular_triangle(self):
+        if not self.is_right_triangle():
+            sides = [self.side1, self.side2, self.side3]
+            sides.sort(reverse=True)
+            return sides[0] ** 2 == sides[1] ** 2 + sides[2] ** 2
 
     def print_area(self):
         print(f'Area of {self.name} is {self.area()}')
