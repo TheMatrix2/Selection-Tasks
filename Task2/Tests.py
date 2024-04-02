@@ -42,6 +42,10 @@ class TestTriangle:
         with pytest.raises(ValueError):
             triangle = Triangle(0.5, 10, 5)
 
+    def test_triangle_without_negative_sides(self):
+        with pytest.raises(ValueError):
+            triangle = Triangle(-5, -6, -8)
+
     def test_triangle_area(self):
         triangle = Triangle(5, 8, 10)
         assert triangle.area() == round(19.81004, 2)
